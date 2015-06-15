@@ -1,15 +1,20 @@
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class CellWrapper extends JPanel {
 
 	private Cell cell;
 
+	/**
+	 * @param cell
+	 */
 	public CellWrapper(Cell cell) {
 		//System.out.print("-");
 		this.cell = cell;
-		setBackground(getColorByCell());
+		this.setBackground(getColorByCell());
+		this.setBorder(BorderFactory.createRaisedBevelBorder());
 	}
 
 	private Color getColorByCell() {
@@ -34,7 +39,7 @@ public class CellWrapper extends JPanel {
 
 	public void updateColor(int width, int height) {
 		this.setSize(width,height);
-		setBackground(getColorByCell());
+		this.setBackground(getColorByCell());
 		
 	}
 }
