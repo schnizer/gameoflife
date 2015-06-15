@@ -7,7 +7,7 @@ public class CellWrapper extends JPanel {
 	private Cell cell;
 
 	public CellWrapper(Cell cell) {
-		//System.out.print("-");
+		// System.out.print("-");
 		this.cell = cell;
 		setBackground(getColorByCell());
 	}
@@ -33,8 +33,8 @@ public class CellWrapper extends JPanel {
 	}
 
 	public void updateColor(int width, int height) {
-		this.setSize(width,height);
+		this.setSize(width, height);
 		setBackground(getColorByCell());
-		
+
 	}
 }

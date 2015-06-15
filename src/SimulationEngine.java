@@ -13,7 +13,7 @@ public class SimulationEngine {
 
 		this.mode = mode;
 		this.rules = rules;
-		
+
 		this.cells = new Cell[ySize][xSize];
 		for (int y = 0; y < ySize; y++) {
 			for (int x = 0; x < xSize; x++) {
@@ -22,16 +22,16 @@ public class SimulationEngine {
 		}
 
 	}
-	
-	public Cell[][] getCells(){
+
+	public Cell[][] getCells() {
 		return cells;
 	}
-	
-	public void setCellAtTo(int x, int y, Cell.State state){
+
+	public void setCellAtTo(int x, int y, Cell.State state) {
 		this.cells[y][x].setBufferState(state);
 		this.cells[y][x].persistBufferState();
 	}
-	
+
 	public void tick() {
 		try {
 
@@ -51,13 +51,14 @@ public class SimulationEngine {
 					neighbourhood[7] = getCell(x + 1, y + 1);
 
 					for (Rule r : rules) {
-						Cell.State newState = r.apply(neighbourhood, cells[y][x]);
+						Cell.State newState = r.apply(neighbourhood,
+								cells[y][x]);
 						cells[y][x].setBufferState(newState);
 					}
 
 				}
 			}
-			
+
 			// persist buffer state
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
@@ -65,8 +66,7 @@ public class SimulationEngine {
 					cells[y][x].age();
 				}
 			}
-			
-			
+
 		} catch (IncorrectSizeException e) {
 			System.out.println("Implementation Error!");
 			System.exit(-1);

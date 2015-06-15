@@ -15,7 +15,7 @@ public class RPopulation extends Rule {
 				return Cell.State.ALIVE;
 			}
 		} else {
-			if (liveCellCount == 3){
+			if (liveCellCount == 3) {
 				return Cell.State.ALIVE;
 			} else {
 				return Cell.State.DEAD;
