@@ -13,7 +13,7 @@ public class Main {
 		engine.setCellAtTo(12, 12, Cell.State.ALIVE);
 		engine.setCellAtTo(13, 12, Cell.State.ALIVE);
 
-		ifGUI gui = new SwingGUI(engine.getCells());
+		ifGUI gui = new SwingGUI(engine.getCells(), 600, 600);
 		//ifGUI gui = new ConsoleGUI();
 
 		long lastTime;

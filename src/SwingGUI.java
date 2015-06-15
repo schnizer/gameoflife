@@ -7,10 +7,14 @@ public class SwingGUI implements ifGUI {
 
 	JFrame frame;
 	CellWrapper[][] wrappers;
+	final int height;
+	final int width;
 
-	public SwingGUI(Cell[][] cells) {
+	public SwingGUI(Cell[][] cells, int width, int height) {
+		this.height = height;
+		this.width = width;
 		this.frame = new JFrame("Game of Life");
-		frame.setSize(new Dimension(800, 600));
+		frame.setSize(new Dimension(width, height));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(cells[0].length, cells.length));
