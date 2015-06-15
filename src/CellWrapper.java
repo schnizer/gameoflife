@@ -34,6 +34,7 @@ public class CellWrapper extends JPanel {
 
 	public void updateColor(int width, int height) {
 		this.setSize(width, height);
+
 		setBackground(getColorByCell());
 
 	}
