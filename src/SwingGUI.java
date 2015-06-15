@@ -13,7 +13,7 @@ public class SwingGUI implements ifGUI {
 	
 	public SwingGUI(Cell[][] cells){
 		this.frame = new JFrame("Game of Life");
-		frame.setSize(new Dimension(600,600));
+		frame.setSize(new Dimension(800,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(cells[0].length, cells.length));
