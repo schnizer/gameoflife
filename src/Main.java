@@ -2,6 +2,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		Config config = new Config();
+		
 		Rule[] rules = { new RPopulation() };
 
 		SimulationEngine engine = new SimulationEngine(
