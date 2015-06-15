@@ -1,25 +1,23 @@
-
 public class Main {
 
 	public static void main(String[] args) {
-		
-		
-		Rule[] rules = {new RPopulation()};
-		
-		SimulationEngine engine = new SimulationEngine(SimulationEngine.EdgeMode.BORDERED, rules, 24, 24);
-		
+
+		Rule[] rules = { new RPopulation() };
+
+		SimulationEngine engine = new SimulationEngine(
+				SimulationEngine.EdgeMode.BORDERED, rules, 24, 24);
+
 		engine.setCellAtTo(11, 12, Cell.State.ALIVE);
 		engine.setCellAtTo(12, 12, Cell.State.ALIVE);
 		engine.setCellAtTo(13, 12, Cell.State.ALIVE);
-		
-		//ifGUI gui = new SwingGUI(engine.getCells());
+
+		// ifGUI gui = new SwingGUI(engine.getCells());
 		ifGUI gui = new ConsoleGUI();
-		
+
 		long lastTime;
 		long lastDelta;
-		
-		while(true)
-		{
+
+		while (true) {
 			lastTime = System.currentTimeMillis();
 			engine.tick();
 			gui.displayArray(engine.getCells());
@@ -30,9 +28,6 @@ public class Main {
 				// Sleep interrupted
 			}
 		}
-		
-		
-		
 
 	}
 
