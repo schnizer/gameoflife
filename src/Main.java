@@ -7,7 +7,7 @@ public class Main {
 		Rule[] rules = { new RPopulation() };
 
 		SimulationEngine engine = new SimulationEngine(
-				SimulationEngine.EdgeMode.BORDERED, rules, 24, 24);
+				SimulationEngine.EdgeMode.BORDERED, rules, 24, 36);
 
 		engine.setCellAtTo(11, 12, Cell.State.ALIVE);
 		engine.setCellAtTo(12, 12, Cell.State.ALIVE);

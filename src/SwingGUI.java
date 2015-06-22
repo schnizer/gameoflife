@@ -17,12 +17,12 @@ public class SwingGUI implements ifGUI {
 		frame.setSize(new Dimension(width, height));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.setLayout(new GridLayout(cells[0].length, cells.length));
+		frame.setLayout(new GridLayout(cells.length, cells[0].length));
 
 		wrappers = new CellWrapper[cells.length][cells[0].length];
 
 		for (int i = 0; i < wrappers.length; i++) {
-			for (int j = 0; j < wrappers.length; j++) {
+			for (int j = 0; j < wrappers[0].length; j++) {
 				wrappers[i][j] = new CellWrapper(cells[i][j]);
 				frame.add(wrappers[i][j]);
 			}
