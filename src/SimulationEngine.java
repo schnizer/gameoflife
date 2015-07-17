@@ -9,6 +9,16 @@ public class SimulationEngine {
 	private Cell[][] cells;
 	private Rule[] rules;
 
+	public SimulationEngine(EdgeMode mode, Rule[] rules, Cell[][] cells) {
+
+		this.mode = mode;
+		this.rules = rules;
+
+		this.cells = cells;
+	}
+	
+	
+	/*
 	public SimulationEngine(EdgeMode mode, Rule[] rules, int xSize, int ySize) {
 
 		this.mode = mode;
@@ -21,7 +31,7 @@ public class SimulationEngine {
 			}
 		}
 
-	}
+	}*/
 
 	public Cell[][] getCells() {
 		return cells;

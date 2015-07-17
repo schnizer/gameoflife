@@ -1,19 +1,18 @@
 public class Main {
+	public final static int CELLWIDTH = 50;
+	public final static int CELLHEIGHT = 50;
 
 	public static void main(String[] args) {
-
-		//Config config = new Config();
 		
 		Rule[] rules = { new RPopulation() };
 
+		Config config = new Config(SimulationEngine.EdgeMode.BORDERED, "D:/inputfile.txt");
+		
 		SimulationEngine engine = new SimulationEngine(
-				SimulationEngine.EdgeMode.BORDERED, rules, 24, 36);
+				SimulationEngine.EdgeMode.BORDERED, rules, config.getCellsFromFile());
+		
 
-		engine.setCellAtTo(11, 12, Cell.State.ALIVE);
-		engine.setCellAtTo(12, 12, Cell.State.ALIVE);
-		engine.setCellAtTo(13, 12, Cell.State.ALIVE);
-
-		ifGUI gui = new SwingGUI(engine.getCells(), 600, 600);
+		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH * config.getCountColumns(), CELLHEIGHT * config.getCountLines());
 		//ifGUI gui = new ConsoleGUI();
 
 		long lastTime;
