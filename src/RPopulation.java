@@ -3,9 +3,9 @@ import java.util.Arrays;
 public class RPopulation extends Rule {
 
 	@Override
-	protected Cell.State applyRule(Cell[] neighbourhood, Cell currentCell) {
+	protected Cell.State applyRule(Cell[] neighbours, Cell currentCell) {
 
-		long liveCellCount = Arrays.stream(neighbourhood)
+		long liveCellCount = Arrays.stream(neighbours)
 				.filter(c -> (c.getState() == Cell.State.ALIVE)).count();
 
 		if (currentCell.getState() == Cell.State.ALIVE) {
