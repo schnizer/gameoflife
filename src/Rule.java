@@ -1,7 +1,7 @@
 public abstract class Rule {
 
-	public Cell.State apply(Cell[] neighbourhood, Cell currentCell){
-		return applyRule(neighbourhood, currentCell);
+	public Cell.State apply(Cell[] neighbours, Cell currentCell){
+		return applyRule(neighbours, currentCell);
 	}
 
 	protected abstract Cell.State applyRule(Cell[] neighbourhood,
