@@ -29,7 +29,6 @@ public class SimulationEngine {
 	}
 
 	public void tick() {
-		try {
 
 			Cell[] neighbours = new Cell[8];
 
@@ -62,11 +61,6 @@ public class SimulationEngine {
 					cells[y][x].age();
 				}
 			}
-
-		} catch (IncorrectSizeException e) {
-			System.out.println("Implementation Error!");
-			System.exit(-1);
-		}
 	}
 
 	private Cell getCell(int x, int y) {

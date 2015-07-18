@@ -4,25 +4,33 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		String inputFilePath = null;
 		int sleepTime = 300;
 		Rule[] rules = { new RPopulation() };
 		Parser parser = null;
 		SimulationEngine.EdgeMode edgeMode = SimulationEngine.EdgeMode.TORUS;
+		String guiMode = "gui";
 		try {
-			parser = new Parser("D:/file2.txt");
+			parser = new Parser(inputFilePath);
 		} catch (IncorrectCharException e) {
 			System.exit(0);
 		} catch (IncorrectSizeException e) {
 			System.exit(0);
 		}
 
-		SimulationEngine engine = new SimulationEngine(edgeMode,
-				rules, parser.getCellsFromFile());
+		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
+				parser.getCellsFromFile());
 
-		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH
-				* parser.getCountColumns(), CELLHEIGHT * parser.getCountLines());
-		// ifGUI gui = new ConsoleGUI();
-
+		ifGUI gui = null;
+		if (guiMode == "gui") {
+			gui = new SwingGUI(engine.getCells(), CELLWIDTH
+					* parser.getCountColumns(), CELLHEIGHT
+					* parser.getCountLines());
+		} else if (guiMode == "cli") {
+			gui = new ConsoleGUI();
+		} else {
+			// error
+		}
 		long lastTime;
 		long lastDelta;
 
@@ -30,9 +38,12 @@ public class Main {
 			lastTime = System.currentTimeMillis();
 			engine.tick();
 			gui.displayArray(engine.getCells());
-			lastDelta = System.currentTimeMillis() - lastTime; 
+			lastDelta = System.currentTimeMillis() - lastTime;
 			try {
-				Thread.sleep(Math.max(0, sleepTime - lastDelta)); // if sleep <= 0, no sleep is executed
+				Thread.sleep(Math.max(0, sleepTime - lastDelta)); // if sleep <=
+																	// 0, no
+																	// sleep is
+																	// executed
 			} catch (InterruptedException e) {
 				// Sleep interrupted
 			}

@@ -1,10 +1,6 @@
 public abstract class Rule {
 
-	public Cell.State apply(Cell[] neighbourhood, Cell currentCell)
-			throws IncorrectSizeException {
-		if (neighbourhood.length != 8) {
-			throw new IncorrectSizeException();
-		}
+	public Cell.State apply(Cell[] neighbourhood, Cell currentCell){
 		return applyRule(neighbourhood, currentCell);
 	}
 
