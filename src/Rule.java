@@ -4,7 +4,7 @@ public abstract class Rule {
 		return applyRule(neighbours, currentCell);
 	}
 
-	protected abstract Cell.State applyRule(Cell[] neighbourhood,
+	protected abstract Cell.State applyRule(Cell[] neighbours,
 			Cell currentCell);
 
 }
