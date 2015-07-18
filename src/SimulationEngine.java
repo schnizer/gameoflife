@@ -17,21 +17,7 @@ public class SimulationEngine {
 		this.cells = cells;
 	}
 	
-	
-	/*
-	public SimulationEngine(EdgeMode mode, Rule[] rules, int xSize, int ySize) {
 
-		this.mode = mode;
-		this.rules = rules;
-
-		this.cells = new Cell[ySize][xSize];
-		for (int y = 0; y < ySize; y++) {
-			for (int x = 0; x < xSize; x++) {
-				cells[y][x] = new Cell();
-			}
-		}
-
-	}*/
 
 	public Cell[][] getCells() {
 		return cells;
@@ -45,23 +31,23 @@ public class SimulationEngine {
 	public void tick() {
 		try {
 
-			Cell[] neighbourhood = new Cell[8];
+			Cell[] neighbours = new Cell[8];
 
 			// Set Buffer State for each cell
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 
-					neighbourhood[0] = getCell(x - 1, y - 1);
-					neighbourhood[1] = getCell(x, y - 1);
-					neighbourhood[2] = getCell(x + 1, y - 1);
-					neighbourhood[3] = getCell(x - 1, y);
-					neighbourhood[4] = getCell(x + 1, y);
-					neighbourhood[5] = getCell(x - 1, y + 1);
-					neighbourhood[6] = getCell(x, y + 1);
-					neighbourhood[7] = getCell(x + 1, y + 1);
+					neighbours[0] = getCell(x - 1, y - 1);
+					neighbours[1] = getCell(x, y - 1);
+					neighbours[2] = getCell(x + 1, y - 1);
+					neighbours[3] = getCell(x - 1, y);
+					neighbours[4] = getCell(x + 1, y);
+					neighbours[5] = getCell(x - 1, y + 1);
+					neighbours[6] = getCell(x, y + 1);
+					neighbours[7] = getCell(x + 1, y + 1);
 
 					for (Rule r : rules) {
-						Cell.State newState = r.apply(neighbourhood,
+						Cell.State newState = r.apply(neighbours,
 								cells[y][x]);
 						cells[y][x].setBufferState(newState);
 					}

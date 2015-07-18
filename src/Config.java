@@ -64,20 +64,17 @@ public class Config {
 		String line = null;
 		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new FileReader(
-					this.sourceFilePath));
+			reader = new BufferedReader(new FileReader(this.sourceFilePath));
 
 			while ((line = reader.readLine()) != null) {
-
+				line = line.trim();
 				countRows[count] = line.length();
 				if (count != 0) {
-					if ((countRows[count]) != countRows[count - 1]) {
-
+					if ((countRows[count - 1]) != countRows[count]) {
 						throw new IncorrectSizeException();
-
 					}
 				}
-
+				count += 1;
 			}
 
 		} catch (IOException e) {
@@ -108,7 +105,6 @@ public class Config {
 				for (int charLocation = 0; charLocation < this
 						.getCountColumns(); charLocation++) {
 					readCells[rowNr][charLocation] = new Cell();
-
 					switch (line.charAt(charLocation)) {
 					case '.':
 						break;

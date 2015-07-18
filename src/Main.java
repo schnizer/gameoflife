@@ -1,14 +1,15 @@
 public class Main {
-	public final static int CELLWIDTH = 50;
-	public final static int CELLHEIGHT = 50;
+	private final static int CELLWIDTH = 50;
+	private final static int CELLHEIGHT = 50;
 
 	public static void main(String[] args) {
 
+		int sleepTime = 300;
 		Rule[] rules = { new RPopulation() };
 		Config config = null;
 		try {
 			config = new Config(SimulationEngine.EdgeMode.TORUS,
-					"D:/file4_parse_error.txt");
+					"D:/file2.txt");
 		} catch (IncorrectCharException e) {
 			System.exit(0);
 		} catch (IncorrectSizeException e) {
@@ -29,9 +30,9 @@ public class Main {
 			lastTime = System.currentTimeMillis();
 			engine.tick();
 			gui.displayArray(engine.getCells());
-			lastDelta = System.currentTimeMillis() - lastTime;
+			lastDelta = System.currentTimeMillis() - lastTime; 
 			try {
-				Thread.sleep(Math.max(0, 300 - lastDelta));
+				Thread.sleep(Math.max(0, sleepTime - lastDelta)); // if sleep <= 0, no sleep is executed
 			} catch (InterruptedException e) {
 				// Sleep interrupted
 			}
