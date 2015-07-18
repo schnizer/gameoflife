@@ -1,14 +1,19 @@
 public class SimulationEngine {
 
-	static enum EdgeMode {
+	static enum EdgeMode {								//New datatype EdgeMode for framemode (TORUS, BORDERED).
 		TORUS, BORDERED
 	};
 
-	private final EdgeMode mode;
+	private final EdgeMode mode;						//Declaration of an EdgeMode called mode.
 
-	private Cell[][] cells;
-	private Rule[] rules;
-
+	private Cell[][] cells;								//Declaration of an 2d array called cells.
+	private Rule[] rules;								//Declaration of an array called rules.
+/**
+ * 
+ * @param mode
+ * @param rules
+ * @param cells
+ */
 	public SimulationEngine(EdgeMode mode, Rule[] rules, Cell[][] cells) {
 
 		this.mode = mode;
@@ -21,7 +26,12 @@ public class SimulationEngine {
 	public Cell[][] getCells() {
 		return cells;
 	}
-
+/**
+ * 
+ * @param x
+ * @param y
+ * @param state
+ */
 	public void setCellAtTo(int x, int y, Cell.State state) {
 		this.cells[y][x].setBufferState(state);
 		this.cells[y][x].persistBufferState();
@@ -61,7 +71,12 @@ public class SimulationEngine {
 				}
 			}
 	}
-
+/**
+ * 
+ * @param x
+ * @param y
+ * @return
+ */
 	private Cell getCell(int x, int y) {
 		if (x < 0) {
 			if (this.mode == EdgeMode.TORUS) {
