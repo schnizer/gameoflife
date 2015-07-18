@@ -4,25 +4,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Config {
+public class Parser {
 
-	SimulationEngine.EdgeMode edgeMode;
 	private final Cell[][] cells;
 	private final int countLines;
 	private final int countColumns;
 	private final String sourceFilePath;
 
-	public Config(SimulationEngine.EdgeMode edgeMode, String sourceFilePath)
+	public Parser(String sourceFilePath)
 			throws IncorrectCharException, IncorrectSizeException {
 		this.sourceFilePath = sourceFilePath;
-		this.edgeMode = edgeMode;
 		this.countLines = setRowCount();
 		this.countColumns = setColumnCount();
 		cells = readCellsFromFile();
-	}
-
-	public SimulationEngine.EdgeMode getEdgeMode() {
-		return this.edgeMode;
 	}
 
 	public String getSourceFilePath() {

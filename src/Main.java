@@ -6,21 +6,21 @@ public class Main {
 
 		int sleepTime = 300;
 		Rule[] rules = { new RPopulation() };
-		Config config = null;
+		Parser parser = null;
+		SimulationEngine.EdgeMode edgeMode = SimulationEngine.EdgeMode.TORUS;
 		try {
-			config = new Config(SimulationEngine.EdgeMode.TORUS,
-					"D:/file2.txt");
+			parser = new Parser("D:/file2.txt");
 		} catch (IncorrectCharException e) {
 			System.exit(0);
 		} catch (IncorrectSizeException e) {
 			System.exit(0);
 		}
 
-		SimulationEngine engine = new SimulationEngine(config.getEdgeMode(),
-				rules, config.getCellsFromFile());
+		SimulationEngine engine = new SimulationEngine(edgeMode,
+				rules, parser.getCellsFromFile());
 
 		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH
-				* config.getCountColumns(), CELLHEIGHT * config.getCountLines());
+				* parser.getCountColumns(), CELLHEIGHT * parser.getCountLines());
 		// ifGUI gui = new ConsoleGUI();
 
 		long lastTime;
