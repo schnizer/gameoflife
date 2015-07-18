@@ -11,7 +11,7 @@ public class CellWrapper extends JPanel {
 		// System.out.print("-");
 		this.cell = cell;
 		this.setBackground(getColorByCell());
-		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+		this.setBorder(BorderFactory.createEtchedBorder());
 	}
 
 	private Color getColorByCell() {
