@@ -3,17 +3,24 @@ public class Main {
 	public final static int CELLHEIGHT = 50;
 
 	public static void main(String[] args) {
-		
+
 		Rule[] rules = { new RPopulation() };
+		Config config = null;
+		try {
+			config = new Config(SimulationEngine.EdgeMode.TORUS,
+					"D:/file4_parse_error.txt");
+		} catch (IncorrectCharException e) {
+			System.exit(0);
+		} catch (IncorrectSizeException e) {
+			System.exit(0);
+		}
 
-		Config config = new Config(SimulationEngine.EdgeMode.TORUS, "D:/file3_parse_error.txt");
-		
-		SimulationEngine engine = new SimulationEngine(
-				config.getEdgeMode(), rules, config.getCellsFromFile());
-		
+		SimulationEngine engine = new SimulationEngine(config.getEdgeMode(),
+				rules, config.getCellsFromFile());
 
-		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH * config.getCountColumns(), CELLHEIGHT * config.getCountLines());
-		//ifGUI gui = new ConsoleGUI();
+		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH
+				* config.getCountColumns(), CELLHEIGHT * config.getCountLines());
+		// ifGUI gui = new ConsoleGUI();
 
 		long lastTime;
 		long lastDelta;

@@ -12,7 +12,8 @@ public class Config {
 	private final int countColumns;
 	private final String sourceFilePath;
 
-	public Config(SimulationEngine.EdgeMode edgeMode, String sourceFilePath) {
+	public Config(SimulationEngine.EdgeMode edgeMode, String sourceFilePath)
+			throws IncorrectCharException, IncorrectSizeException {
 		this.sourceFilePath = sourceFilePath;
 		this.edgeMode = edgeMode;
 		this.countLines = setRowCount();
@@ -57,74 +58,71 @@ public class Config {
 		return lines;
 	}
 
-	private int setColumnCount() {
+	private int setColumnCount() throws IncorrectSizeException {
 		int countRows[] = new int[this.getCountLines()];
 		int count = 0;
 		String line = null;
+		BufferedReader reader = null;
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(
+			reader = new BufferedReader(new FileReader(
 					this.sourceFilePath));
-			try {
-				while ((line = reader.readLine()) != null) {
 
-					countRows[count] = line.length();
-					if (count != 0) {
-						if ((countRows[count]) != countRows[count - 1]) {
+			while ((line = reader.readLine()) != null) {
 
-							throw new IncorrectSizeException();
+				countRows[count] = line.length();
+				if (count != 0) {
+					if ((countRows[count]) != countRows[count - 1]) {
 
-						}
+						throw new IncorrectSizeException();
+
 					}
-
 				}
-			} catch (IncorrectSizeException e) {
-				//
+
 			}
 
-			reader.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// Cannot close Reader
+				e.printStackTrace();
+			}
 		}
 		return countRows[0];
 	}
 
-	private Cell[][] readCellsFromFile() {
+	private Cell[][] readCellsFromFile() throws IncorrectCharException {
 
 		Cell[][] readCells = new Cell[this.getCountLines()][this
 				.getCountColumns()];
 
 		try {
+			FileInputStream fis = new FileInputStream(this.sourceFilePath);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			String line = null;
+			for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
+				line = br.readLine();
+				for (int charLocation = 0; charLocation < this
+						.getCountColumns(); charLocation++) {
+					readCells[rowNr][charLocation] = new Cell();
 
-			try {
-				FileInputStream fis = new FileInputStream(this.sourceFilePath);
-				BufferedReader br = new BufferedReader(new InputStreamReader(
-						fis));
-				String line = null;
-				for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
-					line = br.readLine();
-					for (int charLocation = 0; charLocation < this
-							.getCountColumns(); charLocation++) {
-						readCells[rowNr][charLocation] = new Cell();
-
-						switch (line.charAt(charLocation)) {
-						case '.':
-							break;
-						case '*':
-							readCells[rowNr][charLocation]
-									.setBufferState(Cell.State.ALIVE);
-							readCells[rowNr][charLocation].persistBufferState();
-							break;
-						default:
-							throw new IncorrectCharInInput();
-						}
+					switch (line.charAt(charLocation)) {
+					case '.':
+						break;
+					case '*':
+						readCells[rowNr][charLocation]
+								.setBufferState(Cell.State.ALIVE);
+						readCells[rowNr][charLocation].persistBufferState();
+						break;
+					default:
+						throw new IncorrectCharException();
 					}
 				}
-				br.close();
-
-			} catch (IncorrectCharInInput e) {
-				System.out.println("incorrect char");
 			}
+			br.close();
 		} catch (IOException e) {
 			//
 		}
