@@ -6,10 +6,10 @@ public class Main {
 		
 		Rule[] rules = { new RPopulation() };
 
-		Config config = new Config(SimulationEngine.EdgeMode.BORDERED, "D:/inputfile.txt");
+		Config config = new Config(SimulationEngine.EdgeMode.TORUS, "D:/inputfile.txt");
 		
 		SimulationEngine engine = new SimulationEngine(
-				SimulationEngine.EdgeMode.BORDERED, rules, config.getCellsFromFile());
+				config.getEdgeMode(), rules, config.getCellsFromFile());
 		
 
 		ifGUI gui = new SwingGUI(engine.getCells(), CELLWIDTH * config.getCountColumns(), CELLHEIGHT * config.getCountLines());

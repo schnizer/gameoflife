@@ -19,6 +19,10 @@ public class Config {
 		this.countColumns = setCharCount();
 		cells = readCellsFromFile();
 	}
+	
+	public SimulationEngine.EdgeMode getEdgeMode(){
+		return this.edgeMode;
+	}
 
 	public String getSourceFilePath() {
 		return this.sourceFilePath;
@@ -95,9 +99,8 @@ public class Config {
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 						fis));
 				String line = null;
-				int rowNr = 0;
-				while ((line = br.readLine()) != null) {
-
+				for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++){
+					line = br.readLine();
 					for (int charLocation = 0; charLocation < this
 							.getCountColumns(); charLocation++) {
 						readCells[rowNr][charLocation] = new Cell();
@@ -114,7 +117,6 @@ public class Config {
 							throw new IncorrectCharInInput();
 						}
 					}
-					rowNr += 1;
 				}
 				br.close();
 
