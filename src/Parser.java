@@ -14,8 +14,8 @@ public class Parser {
 	public Parser(String sourceFilePath) throws IncorrectCharException,
 			IncorrectSizeException, IOException {
 		this.sourceFilePath = sourceFilePath;
-		this.countLines = setRowCount();
-		this.countColumns = setColumnCount();
+		this.countLines = initializeRowCount();
+		this.countColumns = initializeColumnCount();
 		cells = readCellsFromFile();
 	}
 
@@ -35,7 +35,7 @@ public class Parser {
 		return this.countColumns;
 	}
 
-	private int setRowCount() throws IOException{
+	private int initializeRowCount() throws IOException{
 		int lines = 0;
 			BufferedReader reader = new BufferedReader(new FileReader(
 					this.sourceFilePath));
@@ -48,7 +48,7 @@ public class Parser {
 		return lines;
 	}
 
-	private int setColumnCount() throws IOException, IncorrectSizeException {
+	private int initializeColumnCount() throws IOException, IncorrectSizeException {
 		int countRows[] = new int[this.getCountLines()];
 		int count = 0;
 		String line = null;
@@ -56,16 +56,16 @@ public class Parser {
 		
 			reader = new BufferedReader(new FileReader(this.sourceFilePath));
 			while ((line = reader.readLine()) != null) {
-				line = reader.readLine();
 				line = line.trim();
 				countRows[count] = line.length();
+				
 				if (count != 0) {
 					if ((countRows[count - 1]) != countRows[count]) {
 						reader.close();
 						throw new IncorrectSizeException();
 					}
 				}
-				count += 1;
+				count++;
 			}
 			reader.close();
 		return countRows[0];
