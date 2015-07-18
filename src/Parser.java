@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,8 +11,8 @@ public class Parser {
 	private final int countColumns;
 	private final String sourceFilePath;
 
-	public Parser(String sourceFilePath)
-			throws IncorrectCharException, IncorrectSizeException {
+	public Parser(String sourceFilePath) throws IncorrectCharException,
+			IncorrectSizeException, IOException {
 		this.sourceFilePath = sourceFilePath;
 		this.countLines = setRowCount();
 		this.countColumns = setColumnCount();
@@ -36,9 +35,8 @@ public class Parser {
 		return this.countColumns;
 	}
 
-	private int setRowCount() {
+	private int setRowCount() throws IOException{
 		int lines = 0;
-		try {
 			BufferedReader reader = new BufferedReader(new FileReader(
 					this.sourceFilePath));
 			while (reader.readLine() != null) {
@@ -46,50 +44,30 @@ public class Parser {
 			}
 
 			reader.close();
-		} catch (IOException e) {
-			// File not found
-			e.printStackTrace();
-		}
+		
 		return lines;
 	}
 
-	private int setColumnCount() throws IncorrectSizeException {
+	private int setColumnCount() throws IOException, IncorrectSizeException {
 		int countRows[] = new int[this.getCountLines()];
 		int count = 0;
 		String line = null;
 		BufferedReader reader = null;
-		try {
+		
 			reader = new BufferedReader(new FileReader(this.sourceFilePath));
-			try {
-			//while ((line = reader.readLine()) != null) {
-			while (true) {
+			while ((line = reader.readLine()) != null) {
 				line = reader.readLine();
 				line = line.trim();
 				countRows[count] = line.length();
 				if (count != 0) {
 					if ((countRows[count - 1]) != countRows[count]) {
+						reader.close();
 						throw new IncorrectSizeException();
 					}
 				}
 				count += 1;
 			}
-			} catch (IOException e) {
-				// 
-				System.out.println(count);
-			}
-
-		} catch (FileNotFoundException e) {
-			// File not found
-			//e.printStackTrace();
-			System.exit(-1);
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				// Cannot close Reader
-				e.printStackTrace();
-			}
-		}
+			reader.close();
 		return countRows[0];
 	}
 

@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Main {
 	private final static int CELLWIDTH = 50;
 	private final static int CELLHEIGHT = 50;
@@ -26,7 +29,12 @@ public class Main {
 			printErrorMessage("Unexpected character in inputfile!");
 		} catch (IncorrectSizeException e) {
 			printErrorMessage("Inputfile not rectangular");
+		} catch (FileNotFoundException e) {
+			printErrorMessage("Inputfile not found!");
+		} catch (IOException e) {
+			printErrorMessage("Error occured when opening inputfile");
 		}
+		
 
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
 				parser.getCellsFromFile());
