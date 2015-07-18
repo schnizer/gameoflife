@@ -15,8 +15,8 @@ public class Config {
 	public Config(SimulationEngine.EdgeMode edgeMode, String sourceFilePath) {
 		this.sourceFilePath = sourceFilePath;
 		this.edgeMode = edgeMode;
-		this.countLines = setLineCount();
-		this.countColumns = setCharCount();
+		this.countLines = setRowCount();
+		this.countColumns = setColumnCount();
 		cells = readCellsFromFile();
 	}
 
@@ -40,7 +40,7 @@ public class Config {
 		return this.countColumns;
 	}
 
-	private int setLineCount() {
+	private int setRowCount() {
 		int lines = 0;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(
@@ -57,7 +57,7 @@ public class Config {
 		return lines;
 	}
 
-	private int setCharCount() {
+	private int setColumnCount() {
 		int countRows[] = new int[this.getCountLines()];
 		int count = 0;
 		String line = null;
