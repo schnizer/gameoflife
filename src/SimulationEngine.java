@@ -18,7 +18,6 @@ public class SimulationEngine {
 	}
 	
 
-
 	public Cell[][] getCells() {
 		return cells;
 	}

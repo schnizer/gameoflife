@@ -14,3 +14,6 @@
 /IncorrectCharInInput.class
 /IncorrectCharException.class
 /Parser.class
+/WrongInputParameterException.class
+/IncorrectInputParameterException.class
+/InputParser.class

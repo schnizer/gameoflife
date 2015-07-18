@@ -46,7 +46,7 @@ public class Parser {
 
 			reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// File not found
 			e.printStackTrace();
 		}
 		return lines;
@@ -72,7 +72,7 @@ public class Parser {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// File not found
 			e.printStackTrace();
 		} finally {
 			try {

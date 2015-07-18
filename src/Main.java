@@ -5,17 +5,27 @@ public class Main {
 	public static void main(String[] args) {
 
 		String inputFilePath = null;
-		int sleepTime = 300;
+		int sleepTime = 0;
+		SimulationEngine.EdgeMode edgeMode = null;
+		String guiMode = null;
+
+		inputFilePath = args[0];
+		sleepTime = Integer.parseInt(args[1]);
+		if (args[2] == "torus" || args[2] == "bordered") {
+			edgeMode = parseEdgeMode(args[2]);
+		} else {
+			errorHandeling("");
+		}
+		guiMode = args[3];
+
 		Rule[] rules = { new RPopulation() };
 		Parser parser = null;
-		SimulationEngine.EdgeMode edgeMode = SimulationEngine.EdgeMode.TORUS;
-		String guiMode = "gui";
 		try {
 			parser = new Parser(inputFilePath);
 		} catch (IncorrectCharException e) {
-			System.exit(0);
+			errorHandeling("Unexpected character in inputfile!");
 		} catch (IncorrectSizeException e) {
-			System.exit(0);
+			errorHandeling("Inputfile not rectangular");
 		}
 
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
@@ -29,7 +39,9 @@ public class Main {
 		} else if (guiMode == "cli") {
 			gui = new ConsoleGUI();
 		} else {
-			// error
+			gui = new SwingGUI(engine.getCells(), CELLWIDTH
+					* parser.getCountColumns(), CELLHEIGHT
+					* parser.getCountLines());
 		}
 		long lastTime;
 		long lastDelta;
@@ -50,5 +62,27 @@ public class Main {
 		}
 
 	}
+	
+	public static void errorHandeling(String errorMessage){
+		System.err.println(errorMessage);
+		System.exit(-1);
+	}
 
+	public static SimulationEngine.EdgeMode parseEdgeMode(
+			String stringToEdgeMode) {
+		SimulationEngine.EdgeMode edgeMode = null;
+
+		switch (stringToEdgeMode) {
+		case "torus":
+			edgeMode = SimulationEngine.EdgeMode.TORUS;
+			break;
+		case "bordered":
+			edgeMode = SimulationEngine.EdgeMode.BORDERED;
+			break;
+		default:
+			// Fehler
+		}
+
+		return edgeMode;
+	}
 }
