@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -59,8 +60,10 @@ public class Parser {
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(this.sourceFilePath));
-
-			while ((line = reader.readLine()) != null) {
+			try {
+			//while ((line = reader.readLine()) != null) {
+			while (true) {
+				line = reader.readLine();
 				line = line.trim();
 				countRows[count] = line.length();
 				if (count != 0) {
@@ -70,10 +73,15 @@ public class Parser {
 				}
 				count += 1;
 			}
+			} catch (IOException e) {
+				// 
+				System.out.println(count);
+			}
 
-		} catch (IOException e) {
+		} catch (FileNotFoundException e) {
 			// File not found
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.exit(-1);
 		} finally {
 			try {
 				reader.close();

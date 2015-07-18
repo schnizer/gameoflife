@@ -11,10 +11,10 @@ public class Main {
 
 		inputFilePath = args[0];
 		sleepTime = Integer.parseInt(args[1]);
-		if (args[2] == "torus" || args[2] == "bordered") {
+		if (args[2].equals("torus") || args[2].equals("bordered")) {
 			edgeMode = parseEdgeMode(args[2]);
 		} else {
-			errorHandeling("");
+			printErrorMessage("Inputparameter");
 		}
 		guiMode = args[3];
 
@@ -23,9 +23,9 @@ public class Main {
 		try {
 			parser = new Parser(inputFilePath);
 		} catch (IncorrectCharException e) {
-			errorHandeling("Unexpected character in inputfile!");
+			printErrorMessage("Unexpected character in inputfile!");
 		} catch (IncorrectSizeException e) {
-			errorHandeling("Inputfile not rectangular");
+			printErrorMessage("Inputfile not rectangular");
 		}
 
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
@@ -63,7 +63,7 @@ public class Main {
 
 	}
 	
-	public static void errorHandeling(String errorMessage){
+	public static void printErrorMessage(String errorMessage){
 		System.err.println(errorMessage);
 		System.exit(-1);
 	}
