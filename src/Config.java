@@ -19,8 +19,8 @@ public class Config {
 		this.countColumns = setCharCount();
 		cells = readCellsFromFile();
 	}
-	
-	public SimulationEngine.EdgeMode getEdgeMode(){
+
+	public SimulationEngine.EdgeMode getEdgeMode() {
 		return this.edgeMode;
 	}
 
@@ -64,20 +64,21 @@ public class Config {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(
 					this.sourceFilePath));
-			while ((line = reader.readLine()) != null) {
+			try {
+				while ((line = reader.readLine()) != null) {
 
-				countRows[count] = line.length();
-				if (count != 0) {
-					if ((countRows[count]) != countRows[count - 1]) {
-						try {
-							throw new IncorrectCharInInput();
-						} catch (IncorrectCharInInput e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+					countRows[count] = line.length();
+					if (count != 0) {
+						if ((countRows[count]) != countRows[count - 1]) {
+
+							throw new IncorrectSizeException();
+
 						}
 					}
-				}
 
+				}
+			} catch (IncorrectSizeException e) {
+				//
 			}
 
 			reader.close();
@@ -90,7 +91,8 @@ public class Config {
 
 	private Cell[][] readCellsFromFile() {
 
-		Cell[][] readCells = new Cell[this.getCountLines()][this.getCountColumns()];
+		Cell[][] readCells = new Cell[this.getCountLines()][this
+				.getCountColumns()];
 
 		try {
 
@@ -99,7 +101,7 @@ public class Config {
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 						fis));
 				String line = null;
-				for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++){
+				for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
 					line = br.readLine();
 					for (int charLocation = 0; charLocation < this
 							.getCountColumns(); charLocation++) {

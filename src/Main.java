@@ -6,7 +6,7 @@ public class Main {
 		
 		Rule[] rules = { new RPopulation() };
 
-		Config config = new Config(SimulationEngine.EdgeMode.TORUS, "D:/inputfile.txt");
+		Config config = new Config(SimulationEngine.EdgeMode.TORUS, "D:/file3_parse_error.txt");
 		
 		SimulationEngine engine = new SimulationEngine(
 				config.getEdgeMode(), rules, config.getCellsFromFile());
