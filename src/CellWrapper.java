@@ -1,5 +1,6 @@
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class CellWrapper extends JPanel {
@@ -9,7 +10,8 @@ public class CellWrapper extends JPanel {
 	public CellWrapper(Cell cell) {
 		// System.out.print("-");
 		this.cell = cell;
-		setBackground(getColorByCell());
+		this.setBackground(getColorByCell());
+		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 	}
 
 	private Color getColorByCell() {

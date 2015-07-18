@@ -4,6 +4,9 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class SwingGUI implements ifGUI {
+	
+	private final static int CELLWIDTH = 50;
+	private final static int CELLHEIGHT = 50;
 
 	JFrame frame;
 	CellWrapper[][] wrappers;
@@ -11,10 +14,10 @@ public class SwingGUI implements ifGUI {
 	final int width;
 
 	public SwingGUI(Cell[][] cells, int width, int height) {
-		this.height = height;
-		this.width = width;
+		this.height = (height * CELLHEIGHT);
+		this.width = (width * CELLWIDTH);
 		this.frame = new JFrame("Game of Life");
-		frame.setSize(new Dimension(width, height));
+		frame.setSize(new Dimension(this.width, this.height));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(cells.length, cells[0].length));

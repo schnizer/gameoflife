@@ -2,8 +2,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
-	private final static int CELLWIDTH = 50;
-	private final static int CELLHEIGHT = 50;
 
 	public static void main(String[] args) {
 
@@ -34,23 +32,18 @@ public class Main {
 		} catch (IOException e) {
 			printErrorMessage("Error occured when opening inputfile");
 		}
-		
 
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
 				parser.getCellsFromFile());
 
 		ifGUI gui = null;
-		if (guiMode == "gui") {
-			gui = new SwingGUI(engine.getCells(), CELLWIDTH
-					* parser.getCountColumns(), CELLHEIGHT
-					* parser.getCountLines());
-		} else if (guiMode == "cli") {
+		if (guiMode.equals("gui")) {
+			gui = new SwingGUI(engine.getCells(), parser.getCountColumns(),
+					parser.getCountLines());
+		} else if (guiMode.equals("cli")) {
 			gui = new ConsoleGUI();
-		} else {
-			gui = new SwingGUI(engine.getCells(), CELLWIDTH
-					* parser.getCountColumns(), CELLHEIGHT
-					* parser.getCountLines());
 		}
+
 		long lastTime;
 		long lastDelta;
 
@@ -70,8 +63,8 @@ public class Main {
 		}
 
 	}
-	
-	public static void printErrorMessage(String errorMessage){
+
+	public static void printErrorMessage(String errorMessage) {
 		System.err.println(errorMessage);
 		System.exit(-1);
 	}
