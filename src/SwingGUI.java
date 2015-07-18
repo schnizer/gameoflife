@@ -5,8 +5,7 @@ import javax.swing.JFrame;
 
 public class SwingGUI implements ifGUI {
 	
-	private final static int CELLWIDTH = 50;
-	private final static int CELLHEIGHT = 50;
+	private final int INITIAL_WINDOW_WIDTH = 800;
 
 	JFrame frame;
 	CellWrapper[][] wrappers;
@@ -14,8 +13,8 @@ public class SwingGUI implements ifGUI {
 	final int width;
 
 	public SwingGUI(Cell[][] cells, int width, int height) {
-		this.height = (height * CELLHEIGHT);
-		this.width = (width * CELLWIDTH);
+		this.height = (int)(((double)height/(double)width) * INITIAL_WINDOW_WIDTH);
+		this.width = (INITIAL_WINDOW_WIDTH);
 		this.frame = new JFrame("Game of Life");
 		frame.setSize(new Dimension(this.width, this.height));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
