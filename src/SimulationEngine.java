@@ -82,7 +82,7 @@ public class SimulationEngine {
  * Get Cell at position x, y and returns the Cell.
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
- * @return the position of the Cell in the grid.
+ * @return the Cell.
  */
 	private Cell getCell(int x, int y) {
 		if (x < 0) {
