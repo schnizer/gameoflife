@@ -7,9 +7,9 @@ public class Cell {
 	
 	static enum State {ALIVE, DEAD}				//New datatype State for Cell (ALIVE, DEAD).
 	
-	private int age;							
-	private State state;						
-	private State bufferState;					
+	private int age;							//Integer to age
+	private State state;						//State to state
+	private State bufferState;					//State to bufferState
 	
 	
 	/**
@@ -23,40 +23,37 @@ public class Cell {
 	/**
 	 * @return the current age of the Cell.
 	 */
-	int getAge(){								
+	int getAge(){								//Returns the age of the Cell.
 		return age;
 	}
 	
 	/**
 	 * Increases the age of the current Cell.
 	 */
-	void age(){									//If cell is alive age is increased by 1
+	void age(){									//If current cell ALIVE increase age by one.
 		if (this.state == State.ALIVE) {
 			this.age++;
 		}
 	}
 	
 	/**
-	 * @param newState buffer for next generation.
+	 * @param newState buffer for new generation.
 	 */
 	void setBufferState(Cell.State newState)
 	{
 		this.bufferState = newState;
 	}
 	
-	/**
-	 * @return the current cell state
-	 */
-	Cell.State getState()						
+	Cell.State getState()						//Get the current state of the Cell (Alive or Dead).
 	{
 		return state;
 	}
 	
 	/**
-	 * Cell adopts buffered state as state
+	 * Proves current Cell and the next generation Cell for age reset.
 	 */
-	void persistBufferState(){					
-		if (this.state == State.DEAD && this.bufferState == State.ALIVE){ //if cell comes to life age is reset
+	void persistBufferState(){					//When current state is DEAD and current bufferState is Alive reset age of current Cell.
+		if (this.state == State.DEAD && this.bufferState == State.ALIVE){
 			this.age = 0;
 		}
 		this.state = bufferState;
