@@ -76,7 +76,7 @@ public class Main {
 			String stringToEdgeMode) {
 		SimulationEngine.EdgeMode edgeMode = null;
 
-		switch (stringToEdgeMode) {
+		switch (stringToEdgeMode.toLowerCase()) {
 		case "torus":
 			edgeMode = SimulationEngine.EdgeMode.TORUS;
 			break;
