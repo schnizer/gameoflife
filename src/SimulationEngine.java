@@ -1,6 +1,6 @@
 /**
  * @author 2883670
- *
+ * 
  */
 public class SimulationEngine {
 
@@ -27,6 +27,9 @@ public class SimulationEngine {
 	}
 	
 
+	/**
+	 * @return the Cell array.
+	 */
 	public Cell[][] getCells() {
 		return cells;
 	}
@@ -48,7 +51,7 @@ public class SimulationEngine {
 
 			Cell[] neighbours = new Cell[8];
 
-																	// Set Buffer State for each cell
+																//Set Buffer State for each cell, proves against clock whether it is ALIVE or DEAD. 
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 
@@ -60,9 +63,9 @@ public class SimulationEngine {
 					neighbours[5] = getCell(x - 1, y + 1);
 					neighbours[6] = getCell(x, y + 1);
 					neighbours[7] = getCell(x + 1, y + 1);
-
-					for (Rule r : rules) {
-						Cell.State newState = r.apply(neighbours,
+																//Each Cell gets proved against the RPopulation rules.
+					for (Rule rules : rules) {
+						Cell.State newState = rules.apply(neighbours,
 								cells[y][x]);
 						cells[y][x].setBufferState(newState);
 					}
@@ -70,7 +73,7 @@ public class SimulationEngine {
 				}
 			}
 
-																	// persist buffer state
+																	//Writes current bufferState to state. 
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 					cells[y][x].persistBufferState();
@@ -79,6 +82,7 @@ public class SimulationEngine {
 			}
 	}
 /**
+ * Sets the Cell depending on EdgeMode TORUS and BORDERED.
  * Checks the current Cell for repositioning.
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
