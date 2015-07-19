@@ -13,12 +13,12 @@ public class Main {
 		inputFilePath = args[0];
 		sleepTime = Integer.parseInt(args[1]);
 		if (args[2].equalsIgnoreCase("torus") || args[2].equalsIgnoreCase("bordered")) {
-			edgeMode = parseEdgeMode(args[2]);
+			edgeMode = parseEdgeMode(args[2].toLowerCase());
 		} else {
 			printErrorMessage("Wrong inputparameters");
 		}
 		if (args[3].equalsIgnoreCase("cli") || args[3].equalsIgnoreCase("gui")) {
-			guiMode = args[3];
+			guiMode = args[3].toLowerCase();
 		} else {
 			printErrorMessage("Wrong inputparameters");
 		}
@@ -76,7 +76,7 @@ public class Main {
 			String stringToEdgeMode) {
 		SimulationEngine.EdgeMode edgeMode = null;
 
-		switch (stringToEdgeMode.toLowerCase()) {
+		switch (stringToEdgeMode) {
 		case "torus":
 			edgeMode = SimulationEngine.EdgeMode.TORUS;
 			break;
