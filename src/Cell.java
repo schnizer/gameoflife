@@ -13,9 +13,9 @@ public class Cell {
 	
 	
 	/**
-	 * Default initialisation for each Cell. 
+	 * Default initialization for each Cell with state dead. 
 	 */
-	public Cell(){								//Default initialisation for Cell to DEAD.
+	public Cell(){
 		this.age = 0;
 		this.state = State.DEAD;
 	}
@@ -28,7 +28,7 @@ public class Cell {
 	}
 	
 	/**
-	 * Increases the age from the current Cell.
+	 * Increases the age of the current Cell.
 	 */
 	void age(){									//If current cell ALIVE increase age by one.
 		if (this.state == State.ALIVE) {
