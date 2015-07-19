@@ -12,12 +12,12 @@ public class Main {
 
 		inputFilePath = args[0];
 		sleepTime = Integer.parseInt(args[1]);
-		if (args[2].equals("torus") || args[2].equals("bordered")) {
+		if (args[2].equalsIgnoreCase("torus") || args[2].equalsIgnoreCase("bordered")) {
 			edgeMode = parseEdgeMode(args[2]);
 		} else {
 			printErrorMessage("Wrong inputparameters");
 		}
-		if (args[3].equals("cli") || args[3].equals("gui")) {
+		if (args[3].equalsIgnoreCase("cli") || args[3].equalsIgnoreCase("gui")) {
 			guiMode = args[3];
 		} else {
 			printErrorMessage("Wrong inputparameters");
@@ -41,9 +41,9 @@ public class Main {
 				parser.getCellsFromFile());
 
 		ifGUI gui = null;
-		if (guiMode.equals("gui")) {
+		if (guiMode.equalsIgnoreCase("gui")) {
 			gui = new SwingGUI(engine.getCells());
-		} else if (guiMode.equals("cli")) {
+		} else if (guiMode.equalsIgnoreCase("cli")) {
 			gui = new ConsoleGUI();
 		}
 
