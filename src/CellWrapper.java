@@ -4,7 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
- * @author Timo
+ * @author 8254649
  *
  */
 public class CellWrapper extends JPanel {

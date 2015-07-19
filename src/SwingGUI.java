@@ -4,7 +4,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 /**
- * @author Timo
+ * @author 8254649
  *
  */
 public class SwingGUI implements ifGUI {
