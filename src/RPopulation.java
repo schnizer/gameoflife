@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * @author Andi
+ * @author 4434822
  *
  */
 public class RPopulation extends Rule {

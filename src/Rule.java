@@ -1,5 +1,5 @@
 /**
- * @author Andi
+ * @author 4434822
  *
  */
 public abstract class Rule {

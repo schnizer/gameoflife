@@ -4,7 +4,7 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
 /**
- * @author Andi
+ * @author 4434822
  *
  */
 public class GameOfLife {
