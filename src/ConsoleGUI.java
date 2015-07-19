@@ -18,6 +18,8 @@ public class ConsoleGUI implements ifGUI {
 	}
 
 	/**
+	 * Determines symbol for cell according to 
+	 * 
 	 * @param cell Cell to return symbol for
 	 * @return returns determined symbol for cell
 	 */

@@ -17,9 +17,9 @@ public class SwingGUI implements ifGUI {
 	final int width;
 
 	/**
+	 * Constructor
+	 * 
 	 * @param cells Array of cells to display initially
-	 * @param width Cells per row
-	 * @param height Cells per column
 	 */
 	public SwingGUI(Cell[][] cells) {
 		this.height = (int)(((double)cells.length/(double)cells[0].length) * INITIAL_WINDOW_WIDTH);
@@ -30,11 +30,11 @@ public class SwingGUI implements ifGUI {
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(cells.length, cells[0].length));
 
-		wrappers = new CellWrapper[cells.length][cells[0].length];
+		wrappers = new CellWrapper[cells.length][cells[0].length]; //Creates new array of CelWrappers the same size as the given array of cells
 
 		for (int i = 0; i < wrappers.length; i++) {
 			for (int j = 0; j < wrappers[0].length; j++) {
-				wrappers[i][j] = new CellWrapper(cells[i][j]);
+				wrappers[i][j] = new CellWrapper(cells[i][j]); //Assigns according cell to each wrapper
 				frame.add(wrappers[i][j]);
 			}
 		}
@@ -47,7 +47,7 @@ public class SwingGUI implements ifGUI {
 
 		for (CellWrapper[] row : wrappers) {
 			for (CellWrapper wrapper : row) {
-				wrapper.updateColor(cellWidth, cellHeight);
+				wrapper.updateColor(cellWidth, cellHeight); //Displays each CellWrapper
 			}
 		}
 		frame.validate();

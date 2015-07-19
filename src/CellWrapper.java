@@ -12,6 +12,8 @@ public class CellWrapper extends JPanel {
 	private Cell cell; //Cell the Wrapper is displaying
 
 	/**
+	 * Constructor
+	 * 
 	 * @param cell Cell the wrapper is displaying
 	 */
 	public CellWrapper(Cell cell) {
@@ -22,6 +24,8 @@ public class CellWrapper extends JPanel {
 	}
 
 	/**
+	 * Determines the color to display
+	 * 
 	 * @return Returns color for the cell bound to the wrapper
 	 */
 	private Color getColorByCell() {
@@ -45,6 +49,8 @@ public class CellWrapper extends JPanel {
 	}
 
 	/**
+	 * Updates color and size CellWrapper
+	 * 
 	 * @param width Set wrapper height. Necessary when window was resized
 	 * @param height Set wrapper width. Necessary when window was resized
 	 */
