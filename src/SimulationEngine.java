@@ -1,6 +1,6 @@
 /**
  * @author 2883670
- *
+ *Andreas Bernöcker
  */
 public class SimulationEngine {
 
