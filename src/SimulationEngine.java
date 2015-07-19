@@ -43,13 +43,13 @@ public class SimulationEngine {
 	}
 
 	/**
-	 * reviews each cell for the next generation weather they ALIVE or DEAD.
+	 * Reviews each cell for the next generation weather they ALIVE or DEAD.
 	 */
 	public void tick() {
 
 			Cell[] neighbours = new Cell[8];
 
-				// Set Buffer State for each cell
+																	// Set Buffer State for each cell
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 
@@ -83,7 +83,7 @@ public class SimulationEngine {
  * 
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
- * @return the position of the Cell.
+ * @return the position of the Cell in the grid.
  */
 	private Cell getCell(int x, int y) {
 		if (x < 0) {

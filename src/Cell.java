@@ -50,7 +50,7 @@ public class Cell {
 	}
 	
 	/**
-	 * Proves current Cell and the next generation Cell for age count.
+	 * Proves current Cell and the next generation Cell for age reset.
 	 */
 	void persistBufferState(){					//When current state is DEAD and current bufferState is Alive reset age of current Cell.
 		if (this.state == State.DEAD && this.bufferState == State.ALIVE){
