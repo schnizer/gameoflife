@@ -1,5 +1,5 @@
 /**
- * @author Timo
+ * @author 8254649
  *
  */
 public class ConsoleGUI implements ifGUI {

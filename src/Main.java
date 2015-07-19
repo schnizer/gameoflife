@@ -12,12 +12,16 @@ public class Main {
 
 		inputFilePath = args[0];
 		sleepTime = Integer.parseInt(args[1]);
-		if (args[2].equals("torus") || args[2].equals("bordered")) {
-			edgeMode = parseEdgeMode(args[2]);
+		if (args[2].equalsIgnoreCase("torus") || args[2].equalsIgnoreCase("bordered")) {
+			edgeMode = parseEdgeMode(args[2].toLowerCase());
 		} else {
-			printErrorMessage("Inputparameter");
+			printErrorMessage("Wrong inputparameters");
 		}
-		guiMode = args[3];
+		if (args[3].equalsIgnoreCase("cli") || args[3].equalsIgnoreCase("gui")) {
+			guiMode = args[3].toLowerCase();
+		} else {
+			printErrorMessage("Wrong inputparameters");
+		}
 
 		Rule[] rules = { new RPopulation() };
 		Parser parser = null;
@@ -37,9 +41,9 @@ public class Main {
 				parser.getCellsFromFile());
 
 		ifGUI gui = null;
-		if (guiMode.equals("gui")) {
+		if (guiMode.equalsIgnoreCase("gui")) {
 			gui = new SwingGUI(engine.getCells());
-		} else if (guiMode.equals("cli")) {
+		} else if (guiMode.equalsIgnoreCase("cli")) {
 			gui = new ConsoleGUI();
 		}
 
@@ -79,8 +83,6 @@ public class Main {
 		case "bordered":
 			edgeMode = SimulationEngine.EdgeMode.BORDERED;
 			break;
-		default:
-			// Fehler
 		}
 
 		return edgeMode;
