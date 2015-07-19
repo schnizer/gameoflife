@@ -31,7 +31,7 @@ public class SimulationEngine {
 		return cells;
 	}
 /**
- * 
+ * Set Cell to ALIVE or DEAD.
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
  * @param state is the current value of Alive or Dead.
@@ -42,7 +42,7 @@ public class SimulationEngine {
 	}
 
 	/**
-	 * Reviews each cell for the next generation weather they ALIVE or DEAD.
+	 * Reviews each cell for the next generation whether it is ALIVE or DEAD.
 	 */
 	public void tick() {
 
