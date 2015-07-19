@@ -32,10 +32,10 @@ public class SwingGUI implements ifGUI {
 
 		wrappers = new CellWrapper[cells.length][cells[0].length]; //Creates new array of CelWrappers the same size as the given array of cells
 
-		for (int i = 0; i < wrappers.length; i++) {
-			for (int j = 0; j < wrappers[0].length; j++) {
-				wrappers[i][j] = new CellWrapper(cells[i][j]); //Assigns according cell to each wrapper
-				frame.add(wrappers[i][j]);
+		for (int row = 0; row < wrappers.length; row++) {
+			for (int column = 0; column < wrappers[0].length; column++) {
+				wrappers[row][column] = new CellWrapper(cells[row][column]); //Assigns according cell to each wrapper
+				frame.add(wrappers[row][column]);
 			}
 		}
 	}

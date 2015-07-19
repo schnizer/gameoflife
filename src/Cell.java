@@ -1,7 +1,7 @@
 
 /**
  * @author 2883670
- *
+ *Features about the Cell like age, state and bufferState. 
  */
 public class Cell {
 	
@@ -52,7 +52,7 @@ public class Cell {
 	/**
 	 * Proves current Cell and the next generation Cell for age reset.
 	 */
-	void persistBufferState(){					//When current state is DEAD and current bufferState is Alive reset age of current Cell.
+	void persistBufferState(){					//When current state is DEAD and bufferState is Alive reset age of current Cell. "Revives a Cell"
 		if (this.state == State.DEAD && this.bufferState == State.ALIVE){
 			this.age = 0;
 		}
