@@ -4,19 +4,19 @@
  */
 public class SimulationEngine {
 
-	static enum EdgeMode {								//New datatype EdgeMode for framemode (TORUS, BORDERED).
+	static enum EdgeMode {								//New data type EdgeMode for frame modes (TORUS, BORDERED).
 		TORUS, BORDERED
 	};
 
 	
-	private final EdgeMode mode;								//Declaration of an EdgeMode called mode.
+	private final EdgeMode mode;								
 
-	private Cell[][] cells;										//Declaration of an 2d array called cells.
-	private Rule[] rules;										//Declaration of an array called rules.
+	private Cell[][] cells;										
+	private Rule[] rules;										
 /**
  * Receives essential data from Main.
  * @param mode represents TORUS or BORDERED.
- * @param rules is an array with the parameters which decide DEAD or ALIVE.
+ * @param rules is an array of all rules which decide DEAD or ALIVE.
  * @param cells is the complete array from the parser.
  */
 	public SimulationEngine(EdgeMode mode, Rule[] rules, Cell[][] cells) {
