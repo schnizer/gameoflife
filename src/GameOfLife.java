@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 
 /**
  * Main class of the project
- * @author 4434822
+ * @author 4434822 aschwoerer
  *
  */
 public class GameOfLife {

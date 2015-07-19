@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
 /**
- * @author Andi
+ * This class is an extension of Rule. It describes the "Standard"-Populationbased ruleset for GameOfLife
+ * @author 4434822 aschwoerer
  *
  */
 public class RPopulation extends Rule {

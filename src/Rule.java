@@ -1,5 +1,6 @@
 /**
- * @author Andi
+ * This abstract class represents a model for rules, which are used by the SimulationEngine.
+ * @author 4434822 aschwoerer
  *
  */
 public abstract class Rule {
