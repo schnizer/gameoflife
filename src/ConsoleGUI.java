@@ -1,3 +1,7 @@
+/**
+ * @author Timo
+ *
+ */
 public class ConsoleGUI implements ifGUI {
 
 	@Override
@@ -6,19 +10,23 @@ public class ConsoleGUI implements ifGUI {
 
 		for (Cell[] row : cells) {
 			for (Cell cell : row) {
-				System.out.print(getSymbolForCell(cell));
+				System.out.print(getSymbolForCell(cell)); //Prints Symbol for every cell
 			}
-			System.out.println();
+			System.out.println(); //Prints new line after all cells in the row are printed
 		}
 
 	}
 
+	/**
+	 * @param cell Cell to return symbol for
+	 * @return returns determined symbol for cell
+	 */
 	private String getSymbolForCell(Cell cell) {
 
 		if (cell.getState() == Cell.State.DEAD) {
-			return " ";
+			return " "; //Dead cells are spaces
 		} else {
-			switch (cell.getAge()) {
+			switch (cell.getAge()) { //Determines symbol according to cell age
 			case 0:
 				return ".";
 			case 1:

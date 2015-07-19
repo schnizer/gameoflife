@@ -3,10 +3,17 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+/**
+ * @author Timo
+ *
+ */
 public class CellWrapper extends JPanel {
 
-	private Cell cell;
+	private Cell cell; //Cell the Wrapper is displaying
 
+	/**
+	 * @param cell Cell the wrapper is displaying
+	 */
 	public CellWrapper(Cell cell) {
 		// System.out.print("-");
 		this.cell = cell;

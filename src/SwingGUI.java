@@ -3,6 +3,10 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+/**
+ * @author Timo
+ *
+ */
 public class SwingGUI implements ifGUI {
 	
 	private final int INITIAL_WINDOW_WIDTH = 800;
