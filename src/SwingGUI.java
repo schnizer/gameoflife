@@ -21,8 +21,8 @@ public class SwingGUI implements ifGUI {
 	 * @param width Cells per row
 	 * @param height Cells per column
 	 */
-	public SwingGUI(Cell[][] cells, int width, int height) {
-		this.height = (int)(((double)height/(double)width) * INITIAL_WINDOW_WIDTH);
+	public SwingGUI(Cell[][] cells) {
+		this.height = (int)(((double)cells.length/(double)cells[0].length) * INITIAL_WINDOW_WIDTH);
 		this.width = (INITIAL_WINDOW_WIDTH);
 		this.frame = new JFrame("Game of Life");
 		frame.setSize(new Dimension(this.width, this.height));

@@ -38,8 +38,7 @@ public class Main {
 
 		ifGUI gui = null;
 		if (guiMode.equals("gui")) {
-			gui = new SwingGUI(engine.getCells(), parser.getCountColumns(),
-					parser.getCountLines());
+			gui = new SwingGUI(engine.getCells());
 		} else if (guiMode.equals("cli")) {
 			gui = new ConsoleGUI();
 		}
