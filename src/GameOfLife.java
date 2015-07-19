@@ -4,6 +4,7 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
 /**
+ * Main class of the project
  * @author 4434822
  *
  */
