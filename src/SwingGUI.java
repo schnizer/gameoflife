@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 /**
  * @author 8254649
+ * Timo
  *
  */
 public class SwingGUI implements ifGUI {

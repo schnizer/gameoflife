@@ -1,5 +1,6 @@
 /**
  * @author 8254649
+ * Timo Schnizer
  *
  */
 public interface ifGUI {

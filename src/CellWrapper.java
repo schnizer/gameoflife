@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 /**
  * @author 8254649
+ * Timo Schnizer
  *
  */
 public class CellWrapper extends JPanel {
