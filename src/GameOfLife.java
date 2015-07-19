@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
-public class Main {
+public class GameOfLife {
 
 	public static void main(String[] args) {
 		
