@@ -21,10 +21,13 @@ public class CellWrapper extends JPanel {
 		this.setBorder(BorderFactory.createEtchedBorder());
 	}
 
+	/**
+	 * @return Returns color for the cell bound to the wrapper
+	 */
 	private Color getColorByCell() {
 		if (cell.getState() == Cell.State.ALIVE) {
 
-			switch (cell.getAge()) {
+			switch (cell.getAge()) { //Cell is getting darker with increasing age
 			case 0:
 				return new Color(0.8f, 0.8f, 0.8f);
 			case 1:
@@ -37,14 +40,18 @@ public class CellWrapper extends JPanel {
 				return new Color(0f, 0.f, 0f);
 			}
 		} else {
-			return new Color(1f, 1f, 1f);
+			return new Color(1f, 1f, 1f); //Dead cells are white
 		}
 	}
 
+	/**
+	 * @param width Set wrapper height. Necessary when window was resized
+	 * @param height Set wrapper width. Necessary when window was resized
+	 */
 	public void updateColor(int width, int height) {
-		this.setSize(width, height);
+		this.setSize(width, height); //Sets new size
 
-		setBackground(getColorByCell());
+		setBackground(getColorByCell()); //Updates wrapper color according to cell age and state
 
 	}
 }

@@ -16,6 +16,11 @@ public class SwingGUI implements ifGUI {
 	final int height;
 	final int width;
 
+	/**
+	 * @param cells Array of cells to display initially
+	 * @param width Cells per row
+	 * @param height Cells per column
+	 */
 	public SwingGUI(Cell[][] cells, int width, int height) {
 		this.height = (int)(((double)height/(double)width) * INITIAL_WINDOW_WIDTH);
 		this.width = (INITIAL_WINDOW_WIDTH);
