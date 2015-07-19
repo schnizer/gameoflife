@@ -107,7 +107,8 @@ public class GameOfLife {
 	}
 
 	/**
-	 * Method for printing error messages to the error stream and exit the application 
+	 * Method for printing error messages to the error stream and exit the application
+	 * This is the only place, where exiting occurs.
 	 * @param errorMessage String that is printed to the errorstream before exiting the application
 	 */
 	private static void printErrorMessageAndExit(String errorMessage) {

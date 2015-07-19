@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="GameOfLife" project="GameOfLife" file="/GameOfLife/src/GameOfLife.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="297" y="193"/>    
+    <position height="-1" width="-1" x="172" y="47"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="false" protected="true" private="true" static="true"/>      
