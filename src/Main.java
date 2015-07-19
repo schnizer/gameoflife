@@ -4,17 +4,12 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		if (args.length != 4) {
-			printErrorMessage("Invalid number of inputparameters. Should be 4. For Example.");
-		}
-		
+
 		String inputFilePath = null;
+		int sleepTime = 0;
 		SimulationEngine.EdgeMode edgeMode = null;
 		String guiMode = null;
 
-		int sleepTime = 0;
-		
 		inputFilePath = args[0];
 		sleepTime = Integer.parseInt(args[1]);
 		if (args[2].equals("torus") || args[2].equals("bordered")) {
