@@ -118,7 +118,7 @@ public class Parser {
 	 * 
 	 * @return The an Array with living and dead cells, as described in the
 	 *         source file
-	 * @htrows IOException File not found.
+	 * @throws IOException File not found.
 	 * @throws IncorrectCharException Character doesn't define a cellstate.
 	 */
 	private Cell[][] readCellsFromFile() throws IncorrectCharException,
