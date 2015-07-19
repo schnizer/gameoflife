@@ -79,7 +79,7 @@ public class SimulationEngine {
 			}
 	}
 /**
- * Checks the current Cell for repositioning.
+ * Get Cell at position x, y and returns the Cell.
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
  * @return the position of the Cell in the grid.
