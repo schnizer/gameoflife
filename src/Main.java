@@ -83,8 +83,6 @@ public class Main {
 		case "bordered":
 			edgeMode = SimulationEngine.EdgeMode.BORDERED;
 			break;
-		default:
-			// Fehler
 		}
 
 		return edgeMode;
