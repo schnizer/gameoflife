@@ -80,7 +80,7 @@ public class Parser {
 
 	/**
 	 * Counts number of characters in one row of the source file. Exception is
-	 * thrown on deversing line lengths.
+	 * thrown if results differ
 	 * 
 	 * @return The number of characters in one row of the source file.
 	 * @throws IOException
