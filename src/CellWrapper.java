@@ -12,17 +12,16 @@ public class CellWrapper extends JPanel {
 	private Cell cell; //Cell the Wrapper is displaying
 
 	/**
-	 * @param cell Cell the wrapper is displaying
+	 * @param cell Cell, the wrapper is displaying
 	 */
 	public CellWrapper(Cell cell) {
-		// System.out.print("-");
 		this.cell = cell;
 		this.setBackground(getColorByCell());
 		this.setBorder(BorderFactory.createEtchedBorder());
 	}
 
 	/**
-	 * @return Returns color for the cell bound to the wrapper
+	 * @return Color of the cell bound to the wrapper
 	 */
 	private Color getColorByCell() {
 		if (cell.getState() == Cell.State.ALIVE) {
