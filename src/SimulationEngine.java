@@ -9,12 +9,12 @@ public class SimulationEngine {
 	};
 
 	
-	private final EdgeMode mode;						//Declaration of an EdgeMode called mode.
+	private final EdgeMode mode;								//Declaration of an EdgeMode called mode.
 
-	private Cell[][] cells;								//Declaration of an 2d array called cells.
-	private Rule[] rules;								//Declaration of an array called rules.
+	private Cell[][] cells;										//Declaration of an 2d array called cells.
+	private Rule[] rules;										//Declaration of an array called rules.
 /**
- * 
+ * Receives essential data from Main.
  * @param mode represents TORUS or BORDERED.
  * @param rules is an array with the parameters which decide DEAD or ALIVE.
  * @param cells is the complete array from the parser.
@@ -23,7 +23,6 @@ public class SimulationEngine {
 
 		this.mode = mode;
 		this.rules = rules;
-
 		this.cells = cells;
 	}
 	
@@ -71,7 +70,7 @@ public class SimulationEngine {
 				}
 			}
 
-			// persist buffer state
+																	// persist buffer state
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 					cells[y][x].persistBufferState();
@@ -80,7 +79,7 @@ public class SimulationEngine {
 			}
 	}
 /**
- * 
+ * Checks the current Cell for repositioning.
  * @param x is one of the coordinate from the Cell array.
  * @param y is one of the coordinate from the Cell array.
  * @return the position of the Cell in the grid.
