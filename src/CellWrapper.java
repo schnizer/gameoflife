@@ -49,7 +49,7 @@ public class CellWrapper extends JPanel {
 	}
 
 	/**
-	 * Updates color and size CellWrapper
+	 * Updates color and size  of CellWrapper
 	 * 
 	 * @param width Set wrapper height. Necessary when window was resized
 	 * @param height Set wrapper width. Necessary when window was resized

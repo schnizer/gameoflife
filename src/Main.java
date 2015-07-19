@@ -15,9 +15,13 @@ public class Main {
 		if (args[2].equals("torus") || args[2].equals("bordered")) {
 			edgeMode = parseEdgeMode(args[2]);
 		} else {
-			printErrorMessage("Inputparameter");
+			printErrorMessage("Wrong inputparameters");
 		}
-		guiMode = args[3];
+		if (args[3].equals("cli") || args[3].equals("gui")) {
+			guiMode = args[3];
+		} else {
+			printErrorMessage("Wrong inputparameters");
+		}
 
 		Rule[] rules = { new RPopulation() };
 		Parser parser = null;
