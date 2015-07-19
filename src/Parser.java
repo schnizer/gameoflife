@@ -17,10 +17,10 @@ public class Parser {
 
 	/**
 	 * 
-	 * @param sourceFilePath
-	 * @throws IncorrectCharException
-	 * @throws IncorrectSizeException
-	 * @throws IOException
+	 * @param sourceFilePath File containing a generation to start from.
+	 * @throws IncorrectCharException Character doesn't define a cellstate.
+	 * @throws IncorrectSizeException Source file doesn't build a rectangluar field.
+	 * @throws IOException File not found.
 	 */
 	public Parser(String sourceFilePath) throws IncorrectCharException,
 			IncorrectSizeException, IOException {
@@ -82,8 +82,8 @@ public class Parser {
 	 * thrown if results differ
 	 * 
 	 * @return The number of characters in one row of the source file.
-	 * @throws IOException
-	 * @throws IncorrectSizeException
+	 * @throws IOException File not found.
+	 * @throws IncorrectSizeException Source file doesn't build a rectangluar field.
 	 */
 	private int initializeColumnCount() throws IOException,
 			IncorrectSizeException {
@@ -118,7 +118,7 @@ public class Parser {
 	 * 
 	 * @return The an Array with living and dead cells, as described in the
 	 *         source file
-	 * @throws IncorrectCharException
+	 * @throws IncorrectCharException Character doesn't define a cellstate.
 	 */
 	private Cell[][] readCellsFromFile() throws IncorrectCharException,
 			IOException {
