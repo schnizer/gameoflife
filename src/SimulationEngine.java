@@ -48,7 +48,7 @@ public class SimulationEngine {
 
 			Cell[] neighbours = new Cell[8];
 
-																	// Set Buffer State for each cell
+																	//Set Buffer State for each cell
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 
@@ -70,7 +70,7 @@ public class SimulationEngine {
 				}
 			}
 
-																	// persist buffer state
+																	//Persist buffer state
 			for (int y = 0; y < cells.length; y++) {
 				for (int x = 0; x < cells[0].length; x++) {
 					cells[y][x].persistBufferState();
