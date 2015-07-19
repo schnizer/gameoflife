@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * @author Adrian
- * Reads the input file checks correctness and returns the generation zero to start the game.
+ * @author Adrian Reads the input file checks correctness and returns the
+ *         generation zero to start the game.
  */
 public class Parser {
 
@@ -17,6 +17,7 @@ public class Parser {
 
 	/**
 	 * The path of source file has to bee known.
+	 * 
 	 * @param sourceFilePath
 	 * @throws IncorrectCharException
 	 * @throws IncorrectSizeException
@@ -60,48 +61,52 @@ public class Parser {
 
 	/**
 	 * Counts number of lines the source file contains.
+	 * 
 	 * @return The number of lines in the source file.
 	 * @throws IOException
 	 */
-	private int initializeRowCount() throws IOException{
+	private int initializeRowCount() throws IOException {
 		int lines = 0;
-			BufferedReader reader = new BufferedReader(new FileReader(
-					this.sourceFilePath));
-			while (reader.readLine() != null) {
-				lines++;
-			}
+		BufferedReader reader = new BufferedReader(new FileReader(
+				this.sourceFilePath));
+		while (reader.readLine() != null) {
+			lines++;
+		}
 
-			reader.close();
-		
+		reader.close();
+
 		return lines;
 	}
 
 	/**
-	 * Counts number of characters in one row of the source file. Exception is thrown
-	 * on deversing line lengths.
+	 * Counts number of characters in one row of the source file. Exception is
+	 * thrown on deversing line lengths.
+	 * 
 	 * @return The number of characters in one row of the source file.
 	 * @throws IOException
 	 * @throws IncorrectSizeException
 	 */
-	private int initializeColumnCount() throws IOException, IncorrectSizeException {
-		int countRows[] = new int[this.getCountLines()];		//buffer for all line lengths
+	private int initializeColumnCount() throws IOException,
+			IncorrectSizeException {
+		int countRows[] = new int[this.getCountLines()]; // buffer for all line
+															// lengths
 		int count = 0;
 		String line = null;
 		BufferedReader reader = null;
-		
+
 		reader = new BufferedReader(new FileReader(this.sourceFilePath));
 		while ((line = reader.readLine()) != null) {
-			line = line.trim();				//cut break patterns at the end of the line
+			line = line.trim(); // cut break patterns at the end of the line
 			countRows[count] = line.length();
-			
-			//compare line length with the one before
+
+			// compare line length with the one before
 			if (count != 0) {
 				if ((countRows[count - 1]) != countRows[count]) {
 					reader.close();
 					throw new IncorrectSizeException();
 				}
 			}
-			
+
 			count++;
 		}
 		reader.close();
@@ -109,42 +114,41 @@ public class Parser {
 	}
 
 	/**
-	 * Reads source file and sets dead cell for '.' and living cell for '*'. Exception is thrown
-	 * on other characters
-	 * @return The an Array with living and dead cells, as described in the source file
+	 * Reads source file and sets dead cell for '.' and living cell for '*'.
+	 * Exception is thrown on other characters
+	 * 
+	 * @return The an Array with living and dead cells, as described in the
+	 *         source file
 	 * @throws IncorrectCharException
 	 */
-	private Cell[][] readCellsFromFile() throws IncorrectCharException {
+	private Cell[][] readCellsFromFile() throws IncorrectCharException,
+			IOException {
 
 		Cell[][] readCells = new Cell[this.getCountLines()][this
 				.getCountColumns()];
 
-		try {
-			FileInputStream fis = new FileInputStream(this.sourceFilePath);
-			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-			String line = null;
-			for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
-				line = br.readLine();
-				for (int charLocation = 0; charLocation < this
-						.getCountColumns(); charLocation++) {
-					readCells[rowNr][charLocation] = new Cell();
-					switch (line.charAt(charLocation)) {
-					case '.':
-						break;
-					case '*':
-						readCells[rowNr][charLocation]
-								.setBufferState(Cell.State.ALIVE);
-						readCells[rowNr][charLocation].persistBufferState();
-						break;
-					default:
-						throw new IncorrectCharException();
-					}
+		FileInputStream fis = new FileInputStream(this.sourceFilePath);
+		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+		String line = null;
+		for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
+			line = br.readLine();
+			for (int charLocation = 0; charLocation < this.getCountColumns(); charLocation++) {
+				readCells[rowNr][charLocation] = new Cell();
+				switch (line.charAt(charLocation)) {
+				case '.':
+					break;
+				case '*':
+					readCells[rowNr][charLocation]
+							.setBufferState(Cell.State.ALIVE);
+					readCells[rowNr][charLocation].persistBufferState();
+					break;
+				default:
+					throw new IncorrectCharException();
 				}
 			}
-			br.close();
-		} catch (IOException e) {
-			//
 		}
+		br.close();
+
 		return readCells;
 	}
 
