@@ -16,7 +16,6 @@ public class Parser {
 	private final String sourceFilePath;
 
 	/**
-	 * The path of source file has to bee known.
 	 * 
 	 * @param sourceFilePath
 	 * @throws IncorrectCharException
