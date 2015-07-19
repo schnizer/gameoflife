@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * @author Adrian Reads the input file checks correctness and returns the
- *         generation zero to start the game.
+ * @author 8388391
+ * Reads the input file checks correctness and returns the generation zero to start the game.
  */
 public class Parser {
 
@@ -130,6 +130,7 @@ public class Parser {
 		FileInputStream fis = new FileInputStream(this.sourceFilePath);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 		String line = null;
+		//read each line and determine determine local postion and set cell dead on '.' or alive on '*' 
 		for (int rowNr = 0; rowNr < this.getCountLines(); rowNr++) {
 			line = br.readLine();
 			for (int charLocation = 0; charLocation < this.getCountColumns(); charLocation++) {
