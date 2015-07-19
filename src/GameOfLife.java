@@ -80,7 +80,7 @@ public class GameOfLife {
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
 				parser.getCellsFromFile()); // create SimulationEngine and pass edgeMode, rules, and initial Cell-Array
 		// End Setup simulationEngine
-		// Start Setop userinterface
+		// Start Setup userinterface
 		ifGUI gui = null; 
 		if (guiMode.equals("gui")) { // set UI to either CLI-Mode or GUI-Mode
 			gui = new SwingGUI(engine.getCells());
