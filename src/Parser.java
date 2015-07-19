@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * @author Adrian
+ * @author 8388391
  * Reads the input file checks correctness and returns the generation zero to start the game.
  */
 public class Parser {
