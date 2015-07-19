@@ -27,6 +27,7 @@ public class GameOfLife {
 	 */
 	public static void main(String[] args) {
 		
+		// Start Parsing of console-parameters
 		if(args.length != 4) { // Abort run if invalid number of parameters
 			printErrorMessageAndExit("Invalid number of input parameters. Should be four. For example: GameOfLive /home/user/inputfile.txt 300 torus gui");
 		}
@@ -59,7 +60,8 @@ public class GameOfLife {
 		} else {
 			printErrorMessageAndExit("Wrong inputparameters: UI must be \"cli\" or \"gui\"");
 		}
-
+		// End Parsing of console-parameters
+		// Start Setup rules
 		Rule[] rules = { new RPopulation() }; // create a new rule of type "RPopulation" (this is the standard game of life ruleset.)
 		Parser parser = null;				  // Declare Parser object, this object is used to parse the input file into an Cell-Array. 
 		try {
@@ -73,17 +75,21 @@ public class GameOfLife {
 		} catch (IOException e) {
 			printErrorMessageAndExit("An error occurred when opening inputfile.");
 		}
-
+		// End Setup rules
+		// Start Setup simulationEngine
 		SimulationEngine engine = new SimulationEngine(edgeMode, rules,
 				parser.getCellsFromFile()); // create SimulationEngine and pass edgeMode, rules, and initial Cell-Array
-
+		// End Setup simulationEngine
+		// Start Setop userinterface
 		ifGUI gui = null; 
 		if (guiMode.equals("gui")) { // set UI to either CLI-Mode or GUI-Mode
 			gui = new SwingGUI(engine.getCells());
 		} else if (guiMode.equals("cli")) {
 			gui = new ConsoleGUI();
 		}
-
+		// End Setup user-interface
+		
+		// Start Run
 		long lastTime;  // Timer-variable that represents the time before a engine-tick
 		long lastDelta; // Timer-variable that represents the time after a engine-tick
 
