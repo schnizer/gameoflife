@@ -62,7 +62,7 @@ public class Parser {
 	 * Counts number of lines the source file contains.
 	 * 
 	 * @return The number of lines in the source file.
-	 * @throws IOException
+	 * @throws IOException File not found.
 	 */
 	private int initializeRowCount() throws IOException {
 		int lines = 0;
