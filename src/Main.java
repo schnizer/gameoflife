@@ -58,9 +58,9 @@ public class Main {
 				parser.getCellsFromFile());
 
 		ifGUI gui = null;
-		if (guiMode.equalsIgnoreCase("gui")) {
+		if (guiMode.equals("gui")) {
 			gui = new SwingGUI(engine.getCells());
-		} else if (guiMode.equalsIgnoreCase("cli")) {
+		} else if (guiMode.equals("cli")) {
 			gui = new ConsoleGUI();
 		}
 
