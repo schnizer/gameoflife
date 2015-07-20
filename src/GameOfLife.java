@@ -118,12 +118,29 @@ public class GameOfLife {
 	}
 
 	/**
-	 * Method for printing error messages to the error stream and exit the application
+	 * Method for printing error message to the error stream and exit the application
 	 * This is the only place, where exiting occurs.
 	 * @param errorMessage String that is printed to the errorstream before exiting the application
 	 */
 	private static void printErrorMessageAndExit(String errorMessage) {
 		System.err.println(errorMessage);
+		System.err.println( ""
+							+ "Necessary parameters: inputFileName: ASCII-text-file that contains a starting-condition \n"
+							+ "                                     (\".\" is a cell that is dead, \"*\" is a cell that is alive \n"
+							+ "                                     in the first generation). Also this file describes   \n"
+							+ "                                     the complete field of the Application.\n"
+	  						+ "                      sleepTime:     Amount of time, the application waits before computing \n"
+	  						+ "                                     the next generation of cells.\n"
+	  						+ "                      gameMode:      Mode of the application, can be \"torus\" or \"bordered\". \n"
+	  						+ "                                     In bordered-mode the surrounding cells are estimated dead, \n"
+	  						+ "                                     in torus-mode the field is \"infinite\".\n" 
+	  						+ "                                     (Cells on the right of the field are considered to be \n"
+	  						+ "                                     neighbours of the leftmost ones, etc.)\n"
+	  						+ "                      uiMode:        Determines which UI is used. Can be either \"gui\" or \"cli\". \n"
+	  						+ "                                     \"gui\" starts a graphical-interface, \"cli\" a text-based one.\n"
+	  						+ "\n"
+	  						+ "Usage: GameOfLife inputFileName sleepTime gameMode uiMode\n"
+	  						+ "Example: GameOfLife D:\\file2.txt 300 torus gui\n");
 		System.exit(-1);
 	}
 
