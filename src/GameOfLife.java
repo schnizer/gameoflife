@@ -95,18 +95,23 @@ public class GameOfLife {
 
 		while (true) {
 			lastTime = System.currentTimeMillis(); // save current time
-			engine.tick(); 						   // compute next generation
-			gui.displayArray(engine.getCells());   // view next generation on UI
-			lastDelta = System.currentTimeMillis() - lastTime; // compute time that was needed to compute and view the next generation
+			engine.tick(); // compute next generation
+			gui.displayArray(engine.getCells()); // view next generation on UI
+			lastDelta = System.currentTimeMillis() - lastTime;
+			// compute time that was needed to compute and view the next
+			// generation
 			try {
-				Thread.sleep(Math.max(0, sleepTime - lastDelta)); // if sleep <= 0, no sleep is executed, so the sleeptime does not have to be 
-																  // checked for validity. On slow systems, the application will run as fast as 
-																  // possible, if the sleeptime-value is set too low. 
-																  // The Thread only sleeps the ammount of time specified by sleepTime minus lastDelta 
-																  // (which is the time the Engine took to recalculate the generation). So the "tick" 
-																  // is really executed every 'sleepTime' millis. 
+				Thread.sleep(Math.max(0, sleepTime - lastDelta));
+				// if sleep <= 0, no sleep is executed, so the sleeptime does
+				// not have to be checked for validity. On slow systems, the
+				// application will run as fast as possible, if the
+				// sleeptime-value is set too low. The Thread only sleeps the
+				// ammount of time specified by sleepTime minus lastDelta (which
+				// is the time the Engine took to recalculate the generation).
+				// So the "tick" is really executed every 'sleepTime' millis.
 			} catch (InterruptedException e) {
-				// Sleep interrupted, as we are not working multithreaded, this can be safely ignored.
+				// Sleep interrupted, as we are not working multithreaded, this
+				// can be safely ignored.
 			}
 		}
 
@@ -127,7 +132,8 @@ public class GameOfLife {
 	 * @param stringToEdgeMode String representation of the edge-mode
 	 * @return Returns SimulationEngine.EdgeMode representation of input String
 	 */
-	private static SimulationEngine.EdgeMode parseEdgeMode(String stringToEdgeMode) { // This method is outsourced from main to have a better code-readability
+	private static SimulationEngine.EdgeMode parseEdgeMode(String stringToEdgeMode) { 
+		// This method is outsourced from main to have a better code-readability
 		SimulationEngine.EdgeMode edgeMode = null;
 
 		switch (stringToEdgeMode) { // Determine which edge-mode to use

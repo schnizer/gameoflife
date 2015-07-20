@@ -11,7 +11,8 @@ public class RPopulation extends Rule {
 	protected Cell.State applyRule(Cell[] neighbours, Cell currentCell) {
 
 		long livingCellCount = Arrays.stream(neighbours)
-				.filter(c -> (c.getState() == Cell.State.ALIVE)).count(); // Convert array to stream, filter out everything that isn't alive and count the occurrences.
+				.filter(c -> (c.getState() == Cell.State.ALIVE)).count(); 
+		// Convert array to stream, filter out everything that isn't alive and count the occurrences.
 
 		if (currentCell.getState() == Cell.State.ALIVE) { // Action for cells that are alive
 			if (livingCellCount < 2 || livingCellCount > 3) { 
